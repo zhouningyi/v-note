@@ -14,6 +14,9 @@
 [windyty](https://www.windyty.com/)<br>
 流场模拟
 
+[nullshcool](http://earth.nullschool.net/)
+流场模拟, [github](https://github.com/cambecc/earth)
+
 ## 广度优先搜索
 [条条大路通罗马](http://roadstorome.moovellab.com/explore)
 [一天里你可以坐火车去多少地方](https://www.washingtonpost.com/news/worldviews/wp/2015/06/05/map-the-remarkable-distances-you-can-travel-on-a-european-train-in-less-than-a-day/)<br>
