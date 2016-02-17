@@ -16,7 +16,7 @@ webgl各方面介绍，包含插图和生动的动画
 
 
 ## threejs
-
+[threejs 源码注释(中文)](https://github.com/omni360/three.js.sourcecode)
 
 ## other Libs
 [stack.gl](https://stack.gl/)<br>
