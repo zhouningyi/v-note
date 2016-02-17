@@ -9,8 +9,10 @@
 ## 艺术作品
 [圣诞节webgl表现](http://christmasexperiments.com/)<br>
 
-[海洋可视化](http://david.li/waves/)<br>
-[海洋可视化2](https://www.windyty.com/)<br>
+
+## 科学类
+[windyty](https://www.windyty.com/)<br>
+流场模拟
 
 ## 广度优先搜索
 [条条大路通罗马](http://roadstorome.moovellab.com/explore)

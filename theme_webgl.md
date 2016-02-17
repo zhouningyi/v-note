@@ -15,8 +15,6 @@ webgl各方面介绍，包含插图和生动的动画
 一份英文版的 较为全面的介绍
 
 
-
-
 ## threejs
 
 
@@ -35,11 +33,10 @@ webgl各方面介绍，包含插图和生动的动画
 [GPU最短路径计算](http://nullprogram.com/webgl-path-solver/)<br>
 [更漂亮的GPU流体](http://www.cake23.de/firewater.html)<br>
 [水面效果的实现](http://blog.csdn.net/tkokof1/article/details/40819225)
-
+[波浪效果模拟1](http://david.li/waves/)<br>
 
 ## shader、特效
 
-用shader制作实时素描的场景
 
 ####入门
 [The Book of Shaders](http://thebookofshaders.com/)<br>
@@ -68,6 +65,8 @@ npm包 可以构建
 #### 其他
 [sketch-rendering(中文)](http://io-meter.com/2014/12/31/sketch-rendering/)<br>
 [sketch-rendering](http://io-meter.com/2014/12/31/sketch-rendering/)<br>
+用shader制作实时素描的场景
+
 [Drawing Lines is Hard](http://mattdesl.svbtle.com/drawing-lines-is-hard)<br>
 
 
