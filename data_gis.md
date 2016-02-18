@@ -15,6 +15,11 @@ Natural Earth Data提供了全球范围内的矢量和影像数据, 矢量数据
 Open Topography是一个提供高空间分辨率的地形数据和操作工具的门户网站。通过Open Topography，用户可以下载LiDAR数据（主要包括：美国、加拿大、澳大利亚、巴西、海地、墨西哥和波多黎各）。
 
 
+#### 地方性数据
+[data hub 洛杉矶](http://geohub.lacity.org/)
+大量细节性数据 如 数百年来的洪水记录
+
+
 ## 地理数据2
 
 [NASA Earth Observations (NEO)](http://neo.sci.gsfc.nasa.gov)<br>
