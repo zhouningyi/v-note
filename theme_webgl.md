@@ -11,6 +11,9 @@ webgl各方面介绍，包含插图和生动的动画
 [GPU Gems](http://http.developer.nvidia.com/GPUGems/gpugems_ch28.html)
 经典而全面的介绍
 
+[WebGL Programming Guide](https://sites.google.com/site/webglbook/)<br>
+全面介绍webgl的书
+
 [webgl academy](http://www.webglacademy.com/)
 一份英文版的 较为全面的介绍
 
@@ -23,6 +26,8 @@ webgl各方面介绍，包含插图和生动的动画
 一种基于ES6的3D引擎 比threejs要轻量，由许许多多[小模块](http://stack.gl/packages)构成。
 其中包含一些有趣的子组件， 如 [glslify](https://github.com/stackgl/glslify), 这个组件让shader模块化
 
+[scenejs](http://scenejs.org/)
+类似threejs 官方网站有很多医学相关的3d可视化 如[biodigital的案例](https://human.biodigital.com/m/health-conditions/bones,-joints-and-muscles/running-mechanics.html)
 ## GPU物理
 [webgl各种gpu物理计算](http://www.ibiblio.org/e-notes/webgl/gpu/contents.html)
 
@@ -66,6 +71,9 @@ npm包 可以构建
 [sketch-rendering(中文)](http://io-meter.com/2014/12/31/sketch-rendering/)<br>
 [sketch-rendering](http://io-meter.com/2014/12/31/sketch-rendering/)<br>
 用shader制作实时素描的场景
+
+[webglstudio 编辑器](http://webglstudio.org/)
+可以说是在线3Dmax 支持节点式编程
 
 [Drawing Lines is Hard](http://mattdesl.svbtle.com/drawing-lines-is-hard)<br>
 

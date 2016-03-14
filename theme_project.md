@@ -17,6 +17,8 @@
 [可交互工业产品demo](https://www.airtightinteractive.com/demos/js/emsx/)<br>
 [math-art 简单几何为主的动画](http://shonkwiler.org/)<br>
 
+[用leaflet探索分形](https://github.com/IvanSanchez/Leaflet.MandelbrotGL)
+
 ## 节点式编程
 [speckle](http://beta.speckle.xyz/view/s/4Jj8Am3tg)
 该网站可以解析grasshopper等节点式编程文件，并生产交互的在线三维模型
@@ -29,3 +31,5 @@
 [概念可视化](http://conceptviz.github.io/#/e30=)<br>
 比较极客的可视化搜集
 
+## 流场可视化
+[函数场可视化]('http://dandelany.github.io/vector-toy/')
