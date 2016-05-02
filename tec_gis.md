@@ -33,3 +33,5 @@
 [PostGIS 快速入门 CN](http://live.osgeo.org/zh/quickstart/postgis_quickstart.html)
 
 [PostGIS 与 Sequelize.js搭配 EN](https://manuel-rauber.com/2016/01/08/using-geo-based-data-with-sequelizejs-utilizing-postgresql-and-ms-sql-server-in-node-js/)
+
+[PostgreSQL 9.4.4 中文手册 CN 推荐](http://www.postgres.cn/docs/9.4/index.html)

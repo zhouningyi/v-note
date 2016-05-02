@@ -24,10 +24,20 @@
 
 [scrapinghub](http://scrapinghub.com/portia/)<br>
 
+[如何获取代理 CN](http://kaito-kidd.com/2015/11/02/proxies-service/)
+
+[秘密代理(列表) CN](http://www.mimiip.com/)
+
+[ip84代理(列表) CN](http://www.ip84.com/all)
+
+[常见的反爬虫和应对方法 CN](http://zhuanlan.zhihu.com/python-hacker/20520370)
+
 
 ## 数据库
 
 [postgres学习资料](https://github.com/ty4z2008/Qix/blob/master/pg.md)
+
+[服务器部署postgres](https://mos.meituan.com/library/28/how-to-install-postgresql9/)
 
 [node-sql学习资料](https://github.com/ty4z2008/Qix/blob/master/node.md)
 
