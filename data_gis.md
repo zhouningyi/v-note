@@ -48,9 +48,9 @@ FAO是一个全球地理信息系统数据集，通过它你可以下载到农�
 ISCGM提供的数据种类包括全球土地和森林覆盖数据集。同时一些文化和自然矢量数（边界、排水、交通、人口中心、海拔、土地覆盖、土地利用和植被）也能在这里获取。
 
 
-[]()<br>
+[poi86 中国poi点下载](http://www.poi86.com/)<br>
 
-[]()<br>
+[中国历史地图](http://www.fas.harvard.edu/~chgis/data/chgis/downloads/v4/)<br>
 
 ## 地理接口
 

@@ -15,6 +15,9 @@
 [搭建开源地图服务2](http://wangwei.info/how-install-tilemill-in-osmgis/)
 [搭建开源地图服务3](http://wangwei.info/osmgis-openlayers-test/)
 
+
+## 瓦片系列
+[矢量瓦片规范 CN](https://github.com/jingsam/vector-tile-spec/blob/master/2.1/README_zh.md)
 ## postGis 系列
 [postgis简介 及性能对比](http://mysql.taobao.org/monthly/2015/07/04/) <br>
 
@@ -35,3 +38,8 @@
 [PostGIS 与 Sequelize.js搭配 EN](https://manuel-rauber.com/2016/01/08/using-geo-based-data-with-sequelizejs-utilizing-postgresql-and-ms-sql-server-in-node-js/)
 
 [PostgreSQL 9.4.4 中文手册 CN 推荐](http://www.postgres.cn/docs/9.4/index.html)
+
+[pg的窗口函数等用法](http://blog.csdn.net/ai6740165/article/details/38038259)
+
+
+[Postgres的存储过程简介 CN](http://www.jasongj.com/2015/12/27/SQL4_%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B_Store%20Procedure/)
