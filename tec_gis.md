@@ -41,5 +41,7 @@
 
 [pg的窗口函数等用法](http://blog.csdn.net/ai6740165/article/details/38038259)
 
+[geometry 和 geography的一些区别](https://github.com/Universefei/memo/blob/master/gis/PostGIS-04.md)
+
 
 [Postgres的存储过程简介 CN](http://www.jasongj.com/2015/12/27/SQL4_%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B_Store%20Procedure/)

@@ -20,3 +20,9 @@
 
 ## 手势识别
 [手势识别和曲线柔滑原理 EN](http://jackschaedler.github.io/handwriting-recognition/)
+
+## 中文分词
+
+[波森中文 CN](http://bosonnlp.com/)
+产品\api\语料库
+<br>

@@ -16,9 +16,12 @@ react资源（英文）
 [react案例](https://github.com/zhangmengxue/React-Learning)<br>
 入门案例，clone即用
 
+[awesome-react EN](https://github.com/enaqx/awesome-react)
+
 
 [react | webpack | babel 协同开发](http://rhadow.github.io/2015/04/02/webpack-workflow/)<br>
 
+[redux中文站 CN](http://cn.redux.js.org/)
 
 
 ## canvas
