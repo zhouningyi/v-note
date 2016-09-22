@@ -1,26 +1,6 @@
-# postgres 常用sql
+# hive
 
-### 安装路径
-
-#### mac: 
-
-主路径: `/usr/local/var/postgres`
-
-$PGDATA: ``
-
-安装postgres.app后, ~/.bash_profile 里追加
-
-`export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin`
-
-
-
-###  启动
-
-
-
-`brew services start postgresql`
-
-### 看常用信息
+[hive入门](http://mp.weixin.qq.com/s?__biz=MzIzODExMDE5MA==&mid=2694182433&idx=1&sn=687b754cddc7255026434c683f487ac0#rd)
 
 所有db占硬盘的大小:
 
@@ -70,9 +50,7 @@ psql -U kupai -h rm-2zemyd8m8n226shs7o.pg.rds.aliyuncs.com -p 3432 -d spider
 ```
 
 
-
 ### 导入备份
-
 ```shell
  psql -d dbname -U username -f filepath
 ```
@@ -81,9 +59,6 @@ psql -U kupai -h rm-2zemyd8m8n226shs7o.pg.rds.aliyuncs.com -p 3432 -d spider
 ```shell
 psql -U username -h hostname -d desintationdb -p port -f dumpfilename.sql
 ```
-### 关闭连接
-`brew services stop postgresql`
-`pg_ctl -D /usr/local/var/postgres stop -s -m fast`
 
 ### 创建表 / 索引
 
