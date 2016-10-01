@@ -7,29 +7,29 @@
 通用前端:
 
 ## [css](/css.md)
-##[javascript]('/javascript.md')
-##[webgl]('/webgl.md')
-## [react、redux、es6]('/react_redux_es6.md')
+##[javascript](/javascript.md)
+##[webgl](/webgl.md)
+## [react、redux、es6](/react_redux_es6.md)
 
 <br>
 通用后端:
 
-## [linux]('/linux.md')
-## [node]('/node.md')
-##[postgres]('/postgres.md')
-##[数据库]('/db.md')
+## [linux](/linux.md)
+## [node](/node.md)
+##[postgres](/postgres.md)
+##[数据库](/db.md)
 
 
 <br>
 专业领域:
 
-##[GIS]('/gis.md')
-##[图]('/graph.md')
-##[综合图表及数据]('/chart.md')
-##[数据]('/data.md')
-##[爬虫]('/spider.md')
+##[GIS](/gis.md)
+##[图](/graph.md)
+##[综合图表及数据](/chart.md)
+##[数据](/data.md)
+##[爬虫](/spider.md)
 
 <br>
 其他: 
 
-##[各种工具]('/tools')
+##[各种工具](/tools')
