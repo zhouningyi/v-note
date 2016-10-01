@@ -7,7 +7,7 @@
 通用前端:
 
 ## [css](/css.md)
-##[javascript](/javascript.md)
+##[javascript](/js.md)
 ##[webgl](/webgl.md)
 ## [react、redux、es6](/react_redux_es6.md)
 
