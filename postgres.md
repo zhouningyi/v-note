@@ -279,3 +279,16 @@ st_area(geom :: geography)
 接口:  小区数据dump
 
 交通: 公交线经过
+
+
+
+
+
+## 资料
+
+[postgres学习资料](https://github.com/ty4z2008/Qix/blob/master/pg.md)
+
+[服务器部署postgres](https://mos.meituan.com/library/28/how-to-install-postgresql9/)
+
+[Postgres的存储过程简介 CN](http://www.jasongj.com/2015/12/27/SQL4_%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B_Store%20Procedure/)
+

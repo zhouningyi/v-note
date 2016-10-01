@@ -1,4 +1,13 @@
-# 产品/项目搜集
+# web新技术
+
+
+## canvas
+[几种canvas库的比较](http://jo2.org/html5-canvas-libary-introduction/)<br>
+[几种canvas库的详细比较](https://docs.google.com/spreadsheets/d/1JYEGMN2jJtmwyjB4DMw3uaYLVMkduf61suKpiOzo0hc/edit#gid=0)<br>
+这个doc是fabric的作者维护的
+
+
+
 
 ## html5特效与实验
 #### 综合
@@ -25,15 +34,3 @@
 
 ## 编辑交互功能
 [mapzen的编辑器](http://tangrams.github.io/tangram-play/)<br>
-
-
-## 可视化
-[概念可视化](http://conceptviz.github.io/#/e30=)<br>
-比较极客的可视化搜集
-
-## 流场可视化
-[函数场可视化]('http://dandelany.github.io/vector-toy/')
-
-
-## 数据分析
-[中国的人口和城市](https://read.douban.com/reader/ebook/7750846/)

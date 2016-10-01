@@ -5,9 +5,17 @@
 terminal  美化[OhmyZsh](http://ohmyz.sh/)
 
 
+让某个js可执行
+```shell
+chmod +x testsh.js
+```
 
 ### 命令
 
+记住服务器密码
+```shell
+brew install ssh-copy-id 
+```
 
 
 解压缩
