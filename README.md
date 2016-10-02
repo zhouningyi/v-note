@@ -32,4 +32,4 @@
 <br>
 其他: 
 
-##[tools](/tools')
+##[tools](/tools)
