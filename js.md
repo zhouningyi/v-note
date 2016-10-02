@@ -7,8 +7,6 @@
 这个doc是fabric的作者维护的
 
 
-
-
 ## html5特效与实验
 #### 综合
 [chromeexperiment](https://www.chromeexperiments.com/)<br>
@@ -34,3 +32,8 @@
 
 ## 编辑交互功能
 [mapzen的编辑器](http://tangrams.github.io/tangram-play/)<br>
+
+
+# 开发技巧
+## sublime
+命令行直接打开sublime: `npm i subl -g`

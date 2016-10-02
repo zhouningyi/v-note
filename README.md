@@ -17,19 +17,19 @@
 ## [linux](/linux.md)
 ## [node](/node.md)
 ##[postgres](/postgres.md)
-##[数据库](/db.md)
+##[database](/db.md)
 
 
 <br>
 专业领域:
 
 ##[GIS](/gis.md)
-##[图](/graph.md)
-##[综合图表及数据](/chart.md)
-##[数据](/data.md)
-##[爬虫](/spider.md)
+##[graph](/graph.md)
+##[charts && others](/chart.md)
+##[data](/data.md)
+##[spider](/spider.md)
 
 <br>
 其他: 
 
-##[各种工具](/tools')
+##[tools](/tools')

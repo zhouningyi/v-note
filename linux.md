@@ -1,9 +1,18 @@
 #Linux 学习
 
+
+
+
+### mac命令 
+显示隐藏文件
+```shell
+defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
+```
+
+
 ### 插件
 
 terminal  美化[OhmyZsh](http://ohmyz.sh/)
-
 
 让某个js可执行
 ```shell
