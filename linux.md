@@ -26,6 +26,10 @@ chmod +x testsh.js
 brew install ssh-copy-id 
 ```
 
+回到上一次的目录
+```shell
+cd - 
+```
 
 解压缩
 

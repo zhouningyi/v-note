@@ -235,7 +235,6 @@ create table track_kuaidi_track(
 
 
 
-
 ### 查询
 
 1、 轨迹与geojson格式的包围圈有交集;
@@ -248,6 +247,18 @@ with geojson as (
 ```
 select 
 where st_intersects()
+
+
+
+2、随机抽取n条
+
+```sql
+SELECT * FROM tbs 
+ORDER BY random() 
+LIMIT n;
+```
+
+
 
 ### 分词
 把句子拆分成分词后拍平
@@ -269,8 +280,6 @@ st_area(geom :: geography)
 
 ### 中文分词
 中文分词，可以选择zhparser, pg_jieba
-
-
 
 
 

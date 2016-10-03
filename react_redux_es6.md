@@ -8,11 +8,17 @@
 
 [Redux 进阶教程](https://github.com/kenberkeley/redux-simple-tutorial/blob/master/redux-advanced-tutorial.md)
 
+[從零開始學 ReactJS（ReactJS 101）](https://www.gitbook.com/book/kdchang/react101/details)
 
 
 
+### react 开发规范
 
-### react
+[airbnb 规范 CN](https://zhuanlan.zhihu.com/p/20616464)
+
+[airbnb 规范 EN](https://github.com/airbnb/javascript/tree/master/react)
+
+### react 通览
 
 [react资料集成](https://github.com/ele828/react-native-guide)<br>
 react资源（中文）
@@ -25,10 +31,17 @@ react资源（英文）
 
 [awesome-react EN](https://github.com/enaqx/awesome-react)
 
-
 [react | webpack | babel 协同开发](http://rhadow.github.io/2015/04/02/webpack-workflow/)<br>
 
 [redux中文站 CN](http://cn.redux.js.org/)
+
+[react editor](http://www.jianshu.com/p/66d8abdffdea)
+
+
+### react 组件相关
+
+[React 通用组件管理源码剖析](http://www.jianshu.com/p/aaca5047a149)
+[React & Npm 组件库维护经验](https://github.com/fex-team/fit/issues/3)
 
 
 

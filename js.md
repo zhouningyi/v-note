@@ -1,10 +1,23 @@
 # web新技术
 
+## 宏观
+[js库排名](http://stats.js.org/) 月、周、日 star的变化趋势
+
+## 开发规范
+[airbnb 规范 EN](https://github.com/airbnb/javascript)
+[airbnb 规范 CN](https://github.com/sivan/javascript-style-guide)
 
 ## canvas
 [几种canvas库的比较](http://jo2.org/html5-canvas-libary-introduction/)<br>
 [几种canvas库的详细比较](https://docs.google.com/spreadsheets/d/1JYEGMN2jJtmwyjB4DMw3uaYLVMkduf61suKpiOzo0hc/edit#gid=0)<br>
 这个doc是fabric的作者维护的
+
+## js技巧
+
+复制数组:
+```javascript
+array.slice();
+```
 
 
 ## html5特效与实验
