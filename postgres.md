@@ -72,7 +72,15 @@ select * from pg_stat_activity;
 select * from information_schema.tables where table_type = 'BASE TABLE' and table_schema not in('information_schema', 'pg_catalog')
 ```
 
+某一个表的字段的信息：
+
+~~~sql
+select * from information_schema.columns
+where table_schema='public' and table_name='users';
+~~~
+
 ### 存在性
+
 判断schema是否存在
 ```sql
 SELECT 1 FROM pg_namespace WHERE nspname = 'schema_name'
