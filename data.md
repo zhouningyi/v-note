@@ -5,6 +5,9 @@
 
 # 综合性数据
 
+## coding
+[npm包依赖关系](http://registry.npmjs.org/d3)
+
 ## 综合性网站
 
 [data.okfn.org](http://data.okfn.org/data)<br>
@@ -22,6 +25,7 @@
 [世界银行](http://data.worldbank.org/)<br>
 [联合国](http://data.un.org/)<br>
 
+[中国数据 微博等 ](https://github.com/Lab41/sunny-side-up/wiki/Chinese-Datasets)
 
 
 

@@ -1,7 +1,10 @@
 #Linux 学习
 
 
-
+### 安装
+centos安装apt-get
+```shell
+```
 
 ### mac命令 
 显示隐藏文件
@@ -20,6 +23,16 @@ chmod +x testsh.js
 ```
 
 ### 命令
+
+搜索命令, -name 要搜索的名字 --exec 选项
+```shell
+ find ./ -name www --exec
+```
+
+显示linux服务器版本
+```shell
+cat /etc/issue
+```
 
 记住服务器密码
 ```shell

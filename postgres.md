@@ -1,6 +1,15 @@
 # postgres 常用sql
 
-### 安装路径
+### 安装
+
+#### centos
+
+```shell
+sudo yum install https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6-x86_64/pgdg-centos95-9.5-3.noarch.r个pm
+
+sudo yum install postgresql95-server postgresql95-contrib
+```
+
 
 #### mac: 
 
@@ -8,15 +17,26 @@
 
 $PGDATA: ``
 
+postgres.app安装
 安装postgres.app后, ~/.bash_profile 里追加
-
 `export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin`
+
+brew安装
+```shell
+brew install postgres
+brew install postgis
+initdb /usr/local/var/postgres
+#启动服务
+ 
+#停止服务
+pg_ctl -D /usr/local/var/postgres stop -s -m fast
+
+createuser -d -a -P postgres
+```
 
 
 
 ###  启动
-
-
 
 `brew services start postgresql`
 
@@ -66,15 +86,23 @@ psql -U kupai -h rm-2zemyd8m8n226shs7o.pg.rds.aliyuncs.com -p 3432 -d spider
 
 ### 备份表(dump)
 ```shell
- pg_dump -U name -h host -p port spider -f filepath
+ pg_dump -U name -h host -p port  spider -f filepath
 ```
 
-
+有时需要设置COLLATE
+```sql
+ALTER TABLE  house_lianjia_communities
+ALTER COLUMN house_type type Character Varying( 255 ) COLLATE "pg_catalog"."default"
+```
 
 ### 导入备份
 
 ```shell
  psql -d dbname -U username -f filepath
+```
+
+```
+pg_restore -U xxx -d dbname < filepath
 ```
 
 ### 表 -> 远端服务器
@@ -149,7 +177,7 @@ COPY dbname(field1, field2, field3) from './xxx.csv' with DELIMITER ',' CSV HEAD
 
 导出时候 可选择写个sql进行筛选
 ```sql
-
+COPY (select * from xxx) TO './xxx.csv'
 ```
 
 表导表，可以考虑: 
@@ -232,7 +260,14 @@ create table track_kuaidi_track(
 
 最后建立几何索引 不再详述。
 
-
+### upsert
+```sql
+INSERT INTO b (pk_b, b, comment) 
+SELECT pk_a, a, comment
+FROM   a 
+ON     CONFLICT (pk_b) DO UPDATE  -- conflict is on the unique column
+SET    b = excluded.b;  --注意这里是excluded
+```
 
 
 ### 查询
@@ -258,15 +293,34 @@ ORDER BY random()
 LIMIT n;
 ```
 
+3、查询结果合并 UNION
+```sql
+SELECT field_1[, field_2,…]
+FROM table_1[, table_2,…]
+UNION [ALL]
+SELECT field_a[, field_b,...]
+FROM table_a[, table_b,…];
+```
 
+4、 '' 引号转义
 
-### 分词
+### 分词/文本搜索
 把句子拆分成分词后拍平
 ```sql
 	UNNEST( regexp_split_to_array(regexp_replace(to_tsvector('jiebacfg',xxxx)::text,'(:\d+)', '', 'g'), ' ')
 	) as yyyyy
 ```
 
+中文分词，可以选择zhparser, pg_jieba
+
+词云统计
+```sql
+SELECT * FROM ts_stat('SELECT content_tvector FROM dncs WHERE "from" like ''%@dnc.org''')
+    ORDER BY nentry DESC;
+```
+
+
+[PostgreSQL的全文检索系统之基本介绍](https://www.rails365.net/articles/postgresql-de-quan-wen-jian-suo-xi-tong-zhi-ji-ben-jie-shao-yi)
 
 ### postGIS
 
@@ -275,11 +329,10 @@ LIMIT n;
 st_area(geom :: geography)
 ```
 
+### 同步数据
+[PostgreSQL使用 postgres_fdw 进行跨库操作](https://dreamer-yzy.github.io/2015/01/05/PostgreSQL%E4%BD%BF%E7%94%A8-postgres-fdw-%E8%BF%9B%E8%A1%8C%E8%B7%A8%E5%BA%93%E6%93%8D%E4%BD%9C/)
 
-
-
-### 中文分词
-中文分词，可以选择zhparser, pg_jieba
+collate是个大坑 导致dump无法复制到服务器
 
 
 
@@ -291,9 +344,9 @@ st_area(geom :: geography)
 
 
 
-
-
 ## 资料
+
+[awesome-postgres EN](https://github.com/dhamaniasad/awesome-postgres#gui)
 
 [postgres学习资料](https://github.com/ty4z2008/Qix/blob/master/pg.md)
 
