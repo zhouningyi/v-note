@@ -37,11 +37,9 @@ createuser -d -a -P postgres
 
 
 ###  启动
-
 `brew services start postgresql`
 
 ### 看常用信息
-
 所有db占硬盘的大小:
 
 ```sql
@@ -79,7 +77,6 @@ SELECT 1 FROM pg_namespace WHERE nspname = 'schema_name'
 ```
 
 ### 连接表
-
 ```shell
 psql -U kupai -h rm-2zemyd8m8n226shs7o.pg.rds.aliyuncs.com -p 3432 -d spider
 ```
@@ -96,7 +93,6 @@ ALTER COLUMN house_type type Character Varying( 255 ) COLLATE "pg_catalog"."defa
 ```
 
 ### 导入备份
-
 ```shell
  psql -d dbname -U username -f filepath
 ```
@@ -113,12 +109,12 @@ psql -U username -h hostname -d desintationdb -p port -f dumpfilename.sql
 `brew services stop postgresql`
 `pg_ctl -D /usr/local/var/postgres stop -s -m fast`
 
-### 创建表 / 索引
 
+### 创建表 / 索引
 创建表: 
 
 ```sql
-drop table if exists track_kuaidi; --可以判断是否存在
+DROP TABLE if exists track_kuaidi; --可以判断是否存在
 CREATE TABLE track_kuaidi (
 	driver_id TEXT,
     lat FLOAT,
@@ -129,15 +125,14 @@ CREATE TABLE track_kuaidi (
 
 非常方便的create table，不必写schema
 ```sql
-create TABLE track_kuaidi_test1 as (select a, b, c from tb);
+CREATE TABLE track_kuaidi_test1 as (select a, b, c from tb);
 ```
 
 如果忘了几何字段，可以补上: 
 
 ```sql
-create index pt_index on track_kuaidi_test using gist (geom);
+CREATE INDEX pt_index on track_kuaidi_test using gist (geom);
 ```
-
 
 
 ### 安装扩展
@@ -186,7 +181,16 @@ COPY (select * from xxx) TO './xxx.csv'
 
 ```
 
+复制表结构
 
+```sql
+create table f(like e);  
+```
+
+### json => array
+```sql
+json_array_elements(json)
+```
 
 ### 行列转换（可排序）
 
@@ -194,11 +198,27 @@ COPY (select * from xxx) TO './xxx.csv'
 select array_agg(x) x,array_agg(y order by y desc) y from tb
 ```
 
-### 数组拍平成行
+### 数组
+
+拍平成行
 ```sql
 SELECT unnest(array[1,3]); 
 ```
+数组无重复合并
+```sql
+create or replace function arr_merge(anyarray, anyarray) returns anyarray as $$      
+  select array(select unnest(array_cat($1,$2)) group by 1);    
+$$ language sql strict;
+```
 
+优化 count distinct，这样的sql执行很慢
+```sql
+select count(distinct sex) from sex; 
+```
+不如 
+```sql
+select sex from sex group by sex; 
+```
 ### 导入轨迹数据(纯点)
 
 从csv导入轨迹数据(lat, lng, time)后，建立点几何对象:
@@ -304,7 +324,21 @@ FROM table_a[, table_b,…];
 
 4、 '' 引号转义
 
+5、 如果特殊字符多，很容易不能插入，可以考虑Dollar-Quoted String Constants 
+
 ### 分词/文本搜索
+
+全列搜索 
+[参考](http://www.postgres.cn/news/viewone/1/254)
+```sql
+create or replace function record_to_text(anyelement) returns text as $$  
+  select $1::text;                        
+$$ language sql strict immutable;  
+
+ select * from tb where price > 0
+ AND record_to_text(tb) ~ '0.84';
+
+```
 把句子拆分成分词后拍平
 ```sql
 	UNNEST( regexp_split_to_array(regexp_replace(to_tsvector('jiebacfg',xxxx)::text,'(:\d+)', '', 'g'), ' ')

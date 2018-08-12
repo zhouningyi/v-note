@@ -7,29 +7,35 @@
 通用前端:
 
 ## [css](/css.md)
-##[javascript](/js.md)
-##[webgl](/webgl.md)
+## [javascript](/js.md)
+## [webgl](/webgl.md)
 ## [react、redux、es6](/react_redux_es6.md)
+## [d3](/d3.md)
 
 <br>
 通用后端:
 
 ## [linux](/linux.md)
 ## [node](/node.md)
-##[postgres](/postgres.md)
-##[database](/db.md)
 
+
+<br>
+数据相关:
+## [postgres](/postgres.md)
+## [database](/db.md)
+## [python](/python.md)
 
 <br>
 专业领域:
 
-##[GIS](/gis.md)
-##[graph](/graph.md)
-##[charts && others](/chart.md)
-##[data](/data.md)
-##[spider](/spider.md)
+## [GIS](/gis.md)
+## [graph](/graph.md)
+## [charts && others](/chart.md)
+## [data](/data.md)
+## [spider](/spider.md)
 
 <br>
 其他: 
 
-##[tools](/tools.md)
+## [tools](/tools.md)
+## [others](/others.md)

@@ -29,4 +29,14 @@
 
 
 
+## 数据处理
+[微软BI 之SSIS 系列 - 使用 SQL Profilling Task (数据探测) 检测数据源数据](https://ask.hellobi.com/blog/biwork/530)
+介绍了很多数据清洗等遇到的问题
 
+
+## 金融数据
+[中财网](http://data.cfi.cn/cfidata.aspx)
+
+
+## 医学数据
+[药智数据](https://db.yaozh.com/interaction?p=2&pageSize=20)
