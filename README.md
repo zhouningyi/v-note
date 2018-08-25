@@ -1,6 +1,7 @@
 # 数据可视化学习资源
 
-数据可视化相关笔记
+数据可视化, 以及相关学科相关笔记
+包括通用前端、数据库、数据分析、机器学习、量化交易等
 简短求精, 期待回馈
 
 <br>
@@ -31,9 +32,10 @@
 
 ## [GIS](/gis.md)
 ## [graph](/graph.md)
-## [charts && others](/chart.md)
+## [charts](/chart.md)
 ## [data](/data.md)
 ## [spider](/spider.md)
+## [quantitative trading](/quant.md)
 
 <br>
 其他: 
