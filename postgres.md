@@ -1,8 +1,9 @@
 # postgres 常用sql
 
-### 安装
 
-#### centos
+### 安装、启动、关闭
+
+#### centos安装
 
 ```shell
 sudo yum install https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6-x86_64/pgdg-centos95-9.5-3.noarch.r个pm
@@ -10,18 +11,21 @@ sudo yum install https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6
 sudo yum install postgresql95-server postgresql95-contrib
 ```
 
+``` centos & docker
+systemctl start docker
+docker pull postgres
+docker run --name pg -e POSTGRES_PASSWORD=xxx -p 0.0.0.0:5432:5432 -d postgres
+```
 
-#### mac: 
+#### mac安装: 
 
 主路径: `/usr/local/var/postgres`
 
-$PGDATA: ``
-
-postgres.app安装
+1. postgres.app安装
 安装postgres.app后, ~/.bash_profile 里追加
 `export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin`
 
-brew安装
+2. brew安装
 ```shell
 brew install postgres
 brew install postgis
@@ -34,12 +38,15 @@ pg_ctl -D /usr/local/var/postgres stop -s -m fast
 createuser -d -a -P postgres
 ```
 
-
-
-###  启动
+####  启动
 `brew services start postgresql`
 
-### 看常用信息
+#### 关闭
+`brew services stop postgresql`
+`pg_ctl -D /usr/local/var/postgres stop -s -m fast`
+
+
+#### 常用系统级查询
 所有db占硬盘的大小:
 
 ```sql
@@ -58,7 +65,6 @@ select pg_size_pretty(pg_database_size('dbname'));
 select pg_size_pretty(pg_table_size('tablename'));
 ```
 
-
 目前访问情况:
 
 ```sql
@@ -70,7 +76,7 @@ select * from pg_stat_activity;
 select * from information_schema.tables where table_type = 'BASE TABLE' and table_schema not in('information_schema', 'pg_catalog')
 ```
 
-### 存在性
+#### 存在性
 判断schema是否存在
 ```sql
 SELECT 1 FROM pg_namespace WHERE nspname = 'schema_name'
@@ -81,18 +87,27 @@ SELECT 1 FROM pg_namespace WHERE nspname = 'schema_name'
 psql -U kupai -h rm-2zemyd8m8n226shs7o.pg.rds.aliyuncs.com -p 3432 -d spider
 ```
 
-### 备份表(dump)
+
+### 导入导出相关
+
+#### 备份表(dump)
 ```shell
  pg_dump -U name -h host -p port  spider -f filepath
 ```
 
-有时需要设置COLLATE
+有时需要设置 COLLATE
 ```sql
 ALTER TABLE  house_lianjia_communities
 ALTER COLUMN house_type type Character Varying( 255 ) COLLATE "pg_catalog"."default"
 ```
 
-### 导入备份
+### 同步数据
+[PostgreSQL使用 postgres_fdw 进行跨库操作](https://dreamer-yzy.github.io/2015/01/05/PostgreSQL%E4%BD%BF%E7%94%A8-postgres-fdw-%E8%BF%9B%E8%A1%8C%E8%B7%A8%E5%BA%93%E6%93%8D%E4%BD%9C/)
+
+collate是个大坑 导致dump无法复制到服务器
+
+
+#### 导入备份
 ```shell
  psql -d dbname -U username -f filepath
 ```
@@ -101,13 +116,10 @@ ALTER COLUMN house_type type Character Varying( 255 ) COLLATE "pg_catalog"."defa
 pg_restore -U xxx -d dbname < filepath
 ```
 
-### 表 -> 远端服务器
+#### 本地表 -> 远端服务器
 ```shell
 psql -U username -h hostname -d desintationdb -p port -f dumpfilename.sql
 ```
-### 关闭连接
-`brew services stop postgresql`
-`pg_ctl -D /usr/local/var/postgres stop -s -m fast`
 
 
 ### 创建表 / 索引
@@ -123,7 +135,7 @@ CREATE TABLE track_kuaidi (
 );
 ```
 
-非常方便的create table，不必写schema
+非常方便的 CREATE TABLE, 不必写表结构: 
 ```sql
 CREATE TABLE track_kuaidi_test1 as (select a, b, c from tb);
 ```
@@ -134,8 +146,7 @@ CREATE TABLE track_kuaidi_test1 as (select a, b, c from tb);
 CREATE INDEX pt_index on track_kuaidi_test using gist (geom);
 ```
 
-
-### 安装扩展
+### 插件
 easy_install 安装pgxn 参考 [PostgreSQL Extensions on Mac OS X](http://www.reades.com/2015/12/11/installing-postgresql-extensions-on-mac-os-x/)
 ```shell
 sudo easy_install pgxnclient
@@ -152,14 +163,6 @@ pgxn load -d 数据库名 -U 用户名 -p 端口 插件名
 ```
 
 
-
-### jsonb extend问题
-
-9.5以下安装插件jsonbx, 更多参考 [德哥大作](https://yq.aliyun.com/articles/54646):
-
-```sql
-select jsonb_concat('{"a":1, "b":2}'::jsonb,'{"b":4, "c":3}'::jsonb)
-```
 
 ### 导入导出
 
@@ -192,13 +195,66 @@ create table f(like e);
 json_array_elements(json)
 ```
 
-### 行列转换（可排序）
+
+### 操作技巧
+
+#### UPSERT
+```sql
+INSERT INTO b (pk_b, b, comment) 
+SELECT pk_a, a, comment
+FROM   a 
+ON     CONFLICT (pk_b) DO UPDATE  -- conflict is on the unique column
+SET    b = excluded.b;  --注意这里是excluded
+```
+
+#### 随机抽取n条
+
+```sql
+SELECT * FROM tbs 
+ORDER BY random() 
+LIMIT n;
+```
+
+#### 查询结果合并 UNION
+```sql
+SELECT field_1[, field_2,…]
+FROM table_1[, table_2,…]
+UNION [ALL]
+SELECT field_a[, field_b,...]
+FROM table_a[, table_b,…];
+```
+
+#### jsonb extend 问题
+
+9.5以下安装插件jsonbx, 更多参考 [德哥大作](https://yq.aliyun.com/articles/54646):
+
+```sql
+select jsonb_concat('{"a":1, "b":2}'::jsonb,'{"b":4, "c":3}'::jsonb)
+```
+
+#### 物化视图
+物化视图 VS 普通视图，扫描的数据更少
+```sql
+--建立物化视图
+ CREATE MATERIALIZED VIEW mv_highgo_T  
+ AS SELECT * FROM highgo_T WHERE id > 10;
+--刷新物化视图,如使用with no data刷新，导致物化视图里面的数据清除不可用
+ REFRESH MATERIALIZED VIEW mv_highgo_T;
+```
+
+
+计算面积，距离等，一种通用性的做法是转化为 geography 对象
+```sql
+st_area(geom :: geography)
+```
+
+#### 行列转换（可排序）
 
 ```sql
 select array_agg(x) x,array_agg(y order by y desc) y from tb
 ```
 
-### 数组
+#### 数组相关
 
 拍平成行
 ```sql
@@ -219,8 +275,10 @@ select count(distinct sex) from sex;
 ```sql
 select sex from sex group by sex; 
 ```
-### 导入轨迹数据(纯点)
+如果特殊字符多，很容易不能插入，可以考虑Dollar-Quoted String Constants 
 
+#### 地理相关
+导入轨迹数据(纯点)
 从csv导入轨迹数据(lat, lng, time)后，建立点几何对象:
 
 ```sql  
@@ -233,10 +291,10 @@ ALTER table track_kuaidi add COLUMN  pt geometry(POINT, 4326);
 select * into track_kuaidi_test from track_kuaidi limit 10000;
 ```
 
-我们可以这样设计轨迹表 ```track_kuaidi_track``` ：
+可以这样设计轨迹表 ```track_kuaidi_track``` ：
 
 ```sql
-insert into track_kuaidi_track 
+INSERT INTO track_kuaidi_track 
 SELECT
   driver_id,
   ST_MakeLine(pt ORDER BY time ASC) AS geom
@@ -246,7 +304,7 @@ GROUP BY driver_id;
 
 但轨迹最好带有时间参数，因此这么做更好，[参考这里](http://permalink.gmane.org/gmane.comp.gis.postgis/37468) :
 ```sql
-insert into track_kuaidi_track 
+INSERT INTO track_kuaidi_track 
 SELECT
   driver_id,
   ST_MakeLine(
@@ -263,7 +321,6 @@ extract(epoch from time)::integer
 是把 ```TIMESTAMP``` 转化为1970年开始的秒数，```ST_MakePointM 只能接受float型的参数。
 
 
-
 另外，这个表的建立是
 
 ```sql
@@ -276,21 +333,10 @@ create table track_kuaidi_track(
 
 注意 geom字段的 ```geometry(LINESTRINGM, 4326)```
 
-
-
 最后建立几何索引 不再详述。
 
-### upsert
-```sql
-INSERT INTO b (pk_b, b, comment) 
-SELECT pk_a, a, comment
-FROM   a 
-ON     CONFLICT (pk_b) DO UPDATE  -- conflict is on the unique column
-SET    b = excluded.b;  --注意这里是excluded
-```
 
-
-### 查询
+#### 地理查询
 
 1、 轨迹与geojson格式的包围圈有交集;
 ```sql
@@ -302,29 +348,6 @@ with geojson as (
 ```
 select 
 where st_intersects()
-
-
-
-2、随机抽取n条
-
-```sql
-SELECT * FROM tbs 
-ORDER BY random() 
-LIMIT n;
-```
-
-3、查询结果合并 UNION
-```sql
-SELECT field_1[, field_2,…]
-FROM table_1[, table_2,…]
-UNION [ALL]
-SELECT field_a[, field_b,...]
-FROM table_a[, table_b,…];
-```
-
-4、 '' 引号转义
-
-5、 如果特殊字符多，很容易不能插入，可以考虑Dollar-Quoted String Constants 
 
 ### 分词/文本搜索
 
@@ -356,26 +379,20 @@ SELECT * FROM ts_stat('SELECT content_tvector FROM dncs WHERE "from" like ''%@dn
 
 [PostgreSQL的全文检索系统之基本介绍](https://www.rails365.net/articles/postgresql-de-quan-wen-jian-suo-xi-tong-zhi-ji-ben-jie-shao-yi)
 
-### postGIS
 
-计算面积，距离等，一种通用性的做法是转化为 geography 对象
-```sql
-st_area(geom :: geography)
-```
+### 统计相关
 
-### 同步数据
-[PostgreSQL使用 postgres_fdw 进行跨库操作](https://dreamer-yzy.github.io/2015/01/05/PostgreSQL%E4%BD%BF%E7%94%A8-postgres-fdw-%E8%BF%9B%E8%A1%8C%E8%B7%A8%E5%BA%93%E6%93%8D%E4%BD%9C/)
+总体方差 : population covariance
+总体标准差 : population standard deviation
+样本方差 : sample covariance
+样本标准差 : sample standard deviation
 
-collate是个大坑 导致dump无法复制到服务器
-
-
-
-爬虫: 2000小区 
-
-接口:  小区数据dump
-
-交通: 公交线经过
-
+1,2,3,100 这组数据共4个值, 总体均值和样本均值分别为 : 
+(1+2+3+100)/4 = 26.5
+variance = var_samp(总体方差): ((1-26.5)^2 + (2-26.5)^2 + (3-26.5)^2 + (100-26.5)^2)/4 = 1801.25
+var_pop(样本方差): ((1-26.5)^2 + (2-26.5)^2 + (3-26.5)^2 + (100-26.5)^2)/(4-1) = 2401.6666....
+stddev_pop(总体标准差): 平方根(总体方差) = 42.4411357058220109
+stddev = stddev_samp(样本标准差): 平方根(样本方差) = 49.0068022489395513
 
 
 ## 资料
@@ -388,3 +405,4 @@ collate是个大坑 导致dump无法复制到服务器
 
 [Postgres的存储过程简介 CN](http://www.jasongj.com/2015/12/27/SQL4_%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B_Store%20Procedure/)
 
+[总体|样本 方差, 标准方差](https://blog.csdn.net/kwame211/article/details/78727233)
