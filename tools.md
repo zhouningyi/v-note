@@ -18,3 +18,15 @@ HTML-CSS-JS Prettify: 美化代码
 
 
 [一个非常好用的data pipeline管理工具 airflow](http://www.jianshu.com/p/59d69981658a)
+
+
+## supervisor的技巧
+如何传入参数
+```shell 
+  node index.js -n okex_full_tick --proxy --db_id local_bfs
+```
+
+=> 
+```shell
+  supervisor -- index.js -n okex_full_tick --proxy --db_id local_bfs
+```
