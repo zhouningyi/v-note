@@ -15,6 +15,12 @@
   killall node
 ```
 
+刷新require的缓存
+```javascript
+  Object.keys(require.cache).forEach(function(key) { delete require.cache[key]; });
+  const xxx = require('xxx');
+```
+
 ## 发布包
 ```javascript
 npm adduser 
